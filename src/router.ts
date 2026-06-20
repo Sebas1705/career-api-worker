@@ -60,9 +60,11 @@ function serverError(e: unknown): Response {
 addRoute('GET', '/', async (_req, _env) => {
   return json({
     name: 'Career API',
-    version: '2.0.0',
+    version: '3.0.0',
     author: 'Sebastián Entrerrios García',
+    i18n: 'All localizable fields use { [langCode]: value } — see /languages for supported codes.',
     endpoints: [
+      '/languages',
       '/personal',
       '/jobs',
       '/projects',
@@ -75,6 +77,35 @@ addRoute('GET', '/', async (_req, _env) => {
     auth: 'Bearer token required for write operations',
   })
 })
+
+// ── Languages (singular) ──────────────────────────────────────────────────────
+//
+// Stored as: { supported: [{ code, label, label_native }], default: "en" }
+// Any consumer can fetch /languages to know which codes are valid and render
+// a language switcher. Add new codes here, then PATCH each entity to include
+// the translations for the new code.
+
+addRoute('GET', '/languages', async (_req, env) => {
+  const data = await kvGet(env, 'languages')
+  if (!data) return notFound('Languages not seeded yet')
+  return json(data)
+})
+
+addRoute('PUT', '/languages', async (req, env) => {
+  const body = await req.json().catch(() => null)
+  if (!body || typeof body !== 'object') return badRequest('Invalid JSON body')
+  await kvSet(env, 'languages', body)
+  return json(body)
+}, true)
+
+addRoute('PATCH', '/languages', async (req, env) => {
+  const patch = await req.json().catch(() => null)
+  if (!patch || typeof patch !== 'object') return badRequest('Invalid JSON body')
+  const current = (await kvGet(env, 'languages')) ?? {}
+  const updated = { ...(current as object), ...(patch as object) }
+  await kvSet(env, 'languages', updated)
+  return json(updated)
+}, true)
 
 // ── Singular entity: /personal ────────────────────────────────────────────────
 

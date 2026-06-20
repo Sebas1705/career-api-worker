@@ -1,3 +1,6 @@
+/** A string value localized per language code, e.g. { en: "Hello", es: "Hola", fr: "Bonjour" } */
+export type LocalizedString = Record<string, string>
+
 export interface Env {
   CAREER_KV: KVNamespace
   API_SECRET: string
@@ -5,6 +8,7 @@ export interface Env {
 }
 
 export type EntityKey =
+  | 'languages'
   | 'personal'
   | 'jobs'
   | 'projects'
@@ -14,6 +18,7 @@ export type EntityKey =
   | 'soft-skills'
 
 export const ENTITY_KEYS: EntityKey[] = [
+  'languages',
   'personal',
   'jobs',
   'projects',
@@ -23,7 +28,10 @@ export const ENTITY_KEYS: EntityKey[] = [
   'soft-skills',
 ]
 
-export const SINGULAR_ENTITIES: EntityKey[] = ['personal']
+/** Entities stored as a single object (not an array). Full replacement via PUT, partial via PATCH. */
+export const SINGULAR_ENTITIES: EntityKey[] = ['languages', 'personal']
+
+/** Entities stored as arrays of objects with an `id` field. Support full CRUD. */
 export const ARRAY_ENTITIES: EntityKey[] = ENTITY_KEYS.filter(
   (k) => !SINGULAR_ENTITIES.includes(k),
 )

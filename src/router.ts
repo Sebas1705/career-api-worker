@@ -2,6 +2,7 @@ import type { Env, EntityKey } from './types'
 import { ARRAY_ENTITIES, SINGULAR_ENTITIES } from './types'
 import { isAuthenticated, unauthorized } from './auth'
 import { kvGet, kvSet, kvGetById, kvCreate, kvUpdate, kvDelete } from './kv'
+import { OPENAPI_SPEC, swaggerUiHtml } from './openapi'
 
 type Handler = (req: Request, env: Env, params: Record<string, string>) => Promise<Response>
 
@@ -54,6 +55,30 @@ function serverError(e: unknown): Response {
   const msg = e instanceof Error ? e.message : 'Internal error'
   return json({ error: msg }, 500)
 }
+
+// ── OpenAPI / Swagger UI ──────────────────────────────────────────────────────
+
+addRoute('GET', '/openapi.json', async (req) => {
+  const origin = new URL(req.url).origin
+  // Inject the real server URL so "Try it out" points to the correct host
+  const spec = {
+    ...OPENAPI_SPEC,
+    servers: [
+      { url: origin, description: origin.includes('localhost') ? 'Local development' : 'Production' },
+      ...OPENAPI_SPEC.servers.slice(1),
+    ],
+  }
+  return new Response(JSON.stringify(spec, null, 2), {
+    headers: { 'Content-Type': 'application/json' },
+  })
+})
+
+addRoute('GET', '/docs', async (req) => {
+  const origin = new URL(req.url).origin
+  return new Response(swaggerUiHtml(`${origin}/openapi.json`), {
+    headers: { 'Content-Type': 'text/html; charset=utf-8' },
+  })
+})
 
 // ── Root ─────────────────────────────────────────────────────────────────────
 

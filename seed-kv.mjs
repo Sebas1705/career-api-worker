@@ -192,6 +192,7 @@ const SEED = {
   certifications: [
     { id: 'jetpack-compose-appcademy',   name: 'Jetpack Compose: Definitive Course',                       issuer: 'AppCademy',        date: 'Dec 2025', url: 'https://www.appcademy.dev/certificates/cert_JGzFpajl' },
     { id: 'firebase-kotlin-appcademy',   name: 'Firebase for Android with Kotlin',                         issuer: 'AppCademy',        date: 'Dec 2025', url: 'https://www.appcademy.dev/certificates/cert_ZKrT1jVn' },
+    { id: 'ios-swiftui-uikit-udemy',     name: 'iOS App Development with SwiftUI and UIKit',               issuer: 'Udemy',            date: 'In progress', url: null },
     { id: 'kmp-android-ios-udemy',       name: 'Kotlin Multiplatform: Intensive Course for Android and iOS', issuer: 'Udemy',           date: 'Apr 2026', url: 'https://www.udemy.com/certificate/UC-8c52c3ca-a258-410f-b126-5c1e1a43f0e5/' },
     { id: 'android-kotlin-compose-gemini', name: 'Master Android with Kotlin and Compose',                 issuer: 'Udemy',            date: 'Aug 2025', url: 'https://www.udemy.com/certificate/UC-71fadc11-b2f1-4176-a7d4-a8bd2c316471/' },
     { id: 'aspnet-rest-api',             name: 'Master RESTful APIs with ASP.NET Core',                    issuer: 'Udemy',            date: 'Aug 2025', url: 'https://www.udemy.com/certificate/UC-2e061584-9523-4aca-a702-ae19fa3d740f/' },

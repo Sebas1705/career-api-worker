@@ -159,14 +159,15 @@ export const SEED = {
 
   // ── Certifications ────────────────────────────────────────────────────────
   certifications: [
-    { id: 'jetpack-compose-appcademy',    name: 'Jetpack Compose: Definitive Course', issuer: 'AppCademy',        date: 'Dec 2025', url: 'https://www.appcademy.dev/certificates/cert_JGzFpajl' },
-    { id: 'firebase-kotlin-appcademy',    name: 'Firebase for Android with Kotlin',   issuer: 'AppCademy',        date: 'Dec 2025', url: 'https://www.appcademy.dev/certificates/cert_ZKrT1jVn' },
-    { id: 'android-kotlin-compose-gemini',name: 'Master Android with Kotlin and Compose', issuer: 'Udemy',        date: 'Aug 2025', url: 'https://www.udemy.com/certificate/UC-71fadc11-b2f1-4176-a7d4-a8bd2c316471/' },
-    { id: 'aspnet-rest-api',              name: 'Master RESTful APIs with ASP.NET Core',  issuer: 'Udemy',        date: 'Aug 2025', url: 'https://www.udemy.com/certificate/UC-2e061584-9523-4aca-a702-ae19fa3d740f/' },
-    { id: 'gemini-google',                name: 'Master AI with Gemini',               issuer: 'Google Skillshop', date: 'Aug 2025', url: 'https://skillshop.exceedlms.com/student/award/AABEEJWZFTCii853HLjNBGsR' },
-    { id: 'mobile-dev-google',            name: 'Mobile App Development Course',       issuer: 'Google Skillshop', date: 'Jun 2024', url: 'https://skillshop.exceedlms.com/student/award/ZSJhx2VgJ4RNYaPHz7DfZaZw' },
-    { id: 'cloud-computing-google',       name: 'Cloud Computing',                     issuer: 'Google Skillshop', date: 'Jun 2024', url: 'https://skillshop.exceedlms.com/student/award/uKLeK9o3mMLXUCxotp5xB6S8' },
-    { id: 'ecommerce-google',             name: 'E-commerce',                          issuer: 'Google Skillshop', date: 'Jul 2023', url: 'https://skillshop.exceedlms.com/student/award/jyHmnH2Di4hoWC9LgKDXWKfp' },
+    { id: 'jetpack-compose-appcademy',    name: 'Jetpack Compose: Definitive Course',              issuer: 'AppCademy',        date: 'Dec 2025', url: 'https://www.appcademy.dev/certificates/cert_JGzFpajl' },
+    { id: 'firebase-kotlin-appcademy',    name: 'Firebase for Android with Kotlin',                issuer: 'AppCademy',        date: 'Dec 2025', url: 'https://www.appcademy.dev/certificates/cert_ZKrT1jVn' },
+    { id: 'kmp-android-ios-udemy',        name: 'Kotlin Multiplatform: Intensive Course for Android and iOS', issuer: 'Udemy', date: 'Apr 2026', url: 'https://www.udemy.com/certificate/UC-8c52c3ca-a258-410f-b126-5c1e1a43f0e5/' },
+    { id: 'android-kotlin-compose-gemini',name: 'Master Android with Kotlin and Compose',          issuer: 'Udemy',            date: 'Aug 2025', url: 'https://www.udemy.com/certificate/UC-71fadc11-b2f1-4176-a7d4-a8bd2c316471/' },
+    { id: 'aspnet-rest-api',              name: 'Master RESTful APIs with ASP.NET Core',            issuer: 'Udemy',            date: 'Aug 2025', url: 'https://www.udemy.com/certificate/UC-2e061584-9523-4aca-a702-ae19fa3d740f/' },
+    { id: 'gemini-google',                name: 'Master AI with Gemini',                            issuer: 'Google Skillshop', date: 'Aug 2025', url: 'https://skillshop.exceedlms.com/student/award/AABEEJWZFTCii853HLjNBGsR' },
+    { id: 'mobile-dev-google',            name: 'Mobile App Development Course',                    issuer: 'Google Skillshop', date: 'Jun 2024', url: 'https://skillshop.exceedlms.com/student/award/ZSJhx2VgJ4RNYaPHz7DfZaZw' },
+    { id: 'cloud-computing-google',       name: 'Cloud Computing',                                  issuer: 'Google Skillshop', date: 'Jun 2024', url: 'https://skillshop.exceedlms.com/student/award/uKLeK9o3mMLXUCxotp5xB6S8' },
+    { id: 'ecommerce-google',             name: 'E-commerce',                                       issuer: 'Google Skillshop', date: 'Jul 2023', url: 'https://skillshop.exceedlms.com/student/award/jyHmnH2Di4hoWC9LgKDXWKfp' },
   ],
 
   // ── Soft Skills ───────────────────────────────────────────────────────────

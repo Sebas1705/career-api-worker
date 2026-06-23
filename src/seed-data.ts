@@ -171,6 +171,42 @@ export const SEED = {
     { id: 'ecommerce-google',             name: 'E-commerce',                                       issuer: 'Google Skillshop', date: 'Jul 2023', url: 'https://skillshop.exceedlms.com/student/award/jyHmnH2Di4hoWC9LgKDXWKfp' },
   ],
 
+  // ── Skills (technical) ───────────────────────────────────────────────────
+  // level: 1=Básico · 2=Intermedio · 3=Avanzado · 4=Experto
+  skills: [
+    // Android
+    { id: 'kotlin',             name: 'Kotlin',               level: 4, category: 'Android',      icon_url: null },
+    { id: 'jetpack-compose',    name: 'Jetpack Compose',      level: 4, category: 'Android',      icon_url: null },
+    { id: 'android-sdk',        name: 'Android SDK',          level: 4, category: 'Android',      icon_url: null },
+    { id: 'mvvm',               name: 'MVVM',                 level: 4, category: 'Architecture', icon_url: null },
+    { id: 'clean-architecture', name: 'Clean Architecture',   level: 4, category: 'Architecture', icon_url: null },
+    { id: 'firebase',           name: 'Firebase',             level: 3, category: 'Cloud',        icon_url: null },
+    { id: 'gradle',             name: 'Gradle',               level: 3, category: 'Android',      icon_url: null },
+    { id: 'detekt',             name: 'Detekt',               level: 3, category: 'Android',      icon_url: null },
+    // iOS (en formación)
+    { id: 'swiftui',            name: 'SwiftUI',              level: 1, category: 'iOS',          icon_url: null },
+    { id: 'uikit',              name: 'UIKit',                level: 1, category: 'iOS',          icon_url: null },
+    { id: 'visionkit',          name: 'VisionKit',            level: 1, category: 'iOS',          icon_url: null },
+    { id: 'admob',              name: 'AdMob',                level: 1, category: 'iOS',          icon_url: null },
+    { id: 'mapkit',             name: 'MapKit',               level: 1, category: 'iOS',          icon_url: null },
+    { id: 'tipkit',             name: 'TipKit',               level: 1, category: 'iOS',          icon_url: null },
+    { id: 'xcode',              name: 'Xcode',                level: 1, category: 'iOS',          icon_url: null },
+    // Multiplataforma
+    { id: 'kmp',                name: 'Kotlin Multiplatform', level: 2, category: 'Multiplatform', icon_url: null },
+    // Backend & Cloud
+    { id: 'csharp',             name: 'C#',                   level: 3, category: 'Backend',      icon_url: null },
+    { id: 'dotnet',             name: '.NET / ASP.NET Core',  level: 3, category: 'Backend',      icon_url: null },
+    { id: 'typescript',         name: 'TypeScript',           level: 3, category: 'Backend',      icon_url: null },
+    { id: 'nodejs',             name: 'Node.js',              level: 3, category: 'Backend',      icon_url: null },
+    { id: 'docker',             name: 'Docker',               level: 2, category: 'DevOps',       icon_url: null },
+    { id: 'kubernetes',         name: 'Kubernetes',           level: 2, category: 'DevOps',       icon_url: null },
+    { id: 'git',                name: 'Git',                  level: 4, category: 'Tools',        icon_url: null },
+    { id: 'github-actions',     name: 'GitHub Actions',       level: 3, category: 'DevOps',       icon_url: null },
+    // IA
+    { id: 'llm-integration',    name: 'LLM Integration',      level: 2, category: 'AI',           icon_url: null },
+    { id: 'gemini-api',         name: 'Gemini API',           level: 2, category: 'AI',           icon_url: null },
+  ],
+
   // ── Soft Skills ───────────────────────────────────────────────────────────
   'soft-skills': [
     { id: 'adaptability',      name: { en: 'Adaptability',        es: 'Adaptabilidad'          } as LocalizedString },

@@ -116,7 +116,7 @@ export const SEED = {
     { id: 'impostor',       name: 'Impostor Android Game',   context: 'personal',
       desc: { en: 'Native Android game with multimodular architecture.',                          es: 'Juego Android nativo con arquitectura multimodular.'     } as LocalizedString,
       tags: ['Kotlin', 'Jetpack Compose', 'Firebase', 'Multi-Module', 'Detekt', 'CI/CD'],
-      github: 'https://github.com/Sebas1705/ImpostorAndroidGame',
+      github: null,
       demo:   'https://play.google.com/store/apps/details?id=es.sebas1705.impostorandroidgame' },
     { id: 'epdm',           name: 'EPDM Music Portal',       context: 'work',
       desc: { en: 'Android app for managing music content with AGEDI rights.',                    es: 'App Android para gestionar contenido musical de AGEDI.'  } as LocalizedString,

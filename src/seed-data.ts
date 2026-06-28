@@ -113,7 +113,7 @@ export const SEED = {
     { id: 'iberext',        name: 'Iberext System',          context: 'work',
       desc: { en: 'Android app for fire prevention systems.',                                     es: 'App Android para sistemas de prevencion de incendios.'   } as LocalizedString,
       tags: ['Kotlin', 'Jetpack Compose', 'C#', '.NET', 'Firebase', 'Clean Architecture'],       github: null, demo: null },
-    { id: 'impostor',       name: 'Impostor Android Game',   context: 'personal',
+    { id: 'impostor',       name: 'Omni-Impostor',   context: 'personal',
       desc: { en: 'Native Android game with multimodular architecture.',                          es: 'Juego Android nativo con arquitectura multimodular.'     } as LocalizedString,
       tags: ['Kotlin', 'Jetpack Compose', 'Firebase', 'Multi-Module', 'Detekt', 'CI/CD'],
       github: null,

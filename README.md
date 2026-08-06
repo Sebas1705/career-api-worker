@@ -2,17 +2,18 @@
 
 REST API for managing personal career portfolio data. Built with **Cloudflare Workers** + **Cloudflare KV**, written in TypeScript.
 
-**Live URL:** `https://career-api.sebas1705.workers.dev`
+**Live URL:** `https://career-api.sebas1705.workers.dev` · **Interactive docs:** [`/docs`](https://career-api.sebas1705.workers.dev/docs) (Swagger UI, spec at [`/openapi.json`](https://career-api.sebas1705.workers.dev/openapi.json))
 
 ---
 
 ## Overview
 
-This API exposes CRUD endpoints for all sections of a developer portfolio: personal info, jobs, projects, education, certifications, skills, and soft skills.
+This API exposes CRUD endpoints for all sections of a developer portfolio: supported languages, personal info, jobs, projects, education, certifications, skills, and soft skills.
 
 - **Read** operations are public (no auth required)
 - **Write** operations (`POST`, `PUT`, `PATCH`, `DELETE`) require a Bearer token
 - Data is persisted in **Cloudflare KV**
+- **i18n:** every localizable field is a `LocalizedString` — a `{ [langCode]: value }` map (e.g. `{ "en": "Hello", "es": "Hola" }`). `GET /languages` lists the supported codes; adding a language means extending the `LocalizedString` fields and updating `/languages`.
 
 ---
 
@@ -32,6 +33,7 @@ Unauthenticated write requests return `401 Unauthorized`.
 
 | Entity | Path | Type |
 |---|---|---|
+| Languages | `/languages` | Singular object |
 | Personal info | `/personal` | Singular object |
 | Jobs | `/jobs` | Array (items have `id`) |
 | Projects | `/projects` | Array (items have `id`) |
@@ -40,7 +42,7 @@ Unauthenticated write requests return `401 Unauthorized`.
 | Certifications | `/certifications` | Array (items have `id`) |
 | Soft Skills | `/soft-skills` | Array (items have `id`) |
 
-**Singular entities** (`personal`) support `GET`, `PUT`, `PATCH`.  
+**Singular entities** (`languages`, `personal`) support `GET`, `PUT`, `PATCH`.  
 **Array entities** support full CRUD: `GET` (list + by id), `POST`, `PUT/:id`, `PATCH/:id`, `DELETE/:id`.
 
 ---
@@ -54,6 +56,21 @@ GET /
 ```
 
 Returns API metadata and available endpoints.
+
+```
+GET /docs           → Swagger UI (interactive documentation)
+GET /openapi.json   → OpenAPI 3.0 specification
+```
+
+---
+
+### Languages (singular)
+
+```
+GET    /languages         → { "default": "en", "supported": [{ "code", "label", "label_native" }] }
+PUT    /languages         → replaces the languages object  [auth]
+PATCH  /languages         → merges fields into the languages object  [auth]
+```
 
 ---
 
@@ -70,7 +87,7 @@ PATCH  /personal          → merges fields into the personal object  [auth]
 curl -X PATCH https://career-api.sebas1705.workers.dev/personal \
   -H "Authorization: Bearer <token>" \
   -H "Content-Type: application/json" \
-  -d '{"location_en": "Barcelona, Spain"}'
+  -d '{"location": {"en": "Barcelona, Spain", "es": "Barcelona, España"}}'
 ```
 
 ---
@@ -140,26 +157,35 @@ curl -X DELETE https://career-api.sebas1705.workers.dev/projects/old-project \
 
 ## Data Schemas
 
+All localizable fields are `LocalizedString` maps: `{ "en": "string", "es": "string", ... }` with one key per supported language code (see `GET /languages`). The exact schemas are also published in [`/openapi.json`](https://career-api.sebas1705.workers.dev/openapi.json) and browsable at [`/docs`](https://career-api.sebas1705.workers.dev/docs).
+
+### Languages
+
+```json
+{
+  "default": "en",
+  "supported": [
+    { "code": "en", "label": "English", "label_native": "English" },
+    { "code": "es", "label": "Spanish", "label_native": "Español" }
+  ]
+}
+```
+
 ### Personal
 
 ```json
 {
   "name": "string",
-  "greeting_en": "string",
-  "greeting_es": "string",
-  "role_en": "string",
-  "role_es": "string",
-  "tagline_en": "string",
-  "tagline_es": "string",
-  "bio_en": "string",
-  "bio_es": "string",
   "email": "string",
-  "location_en": "string",
-  "location_es": "string",
   "cv_url": "string",
   "github": "string",
   "linkedin": "string",
-  "codewars": "string"
+  "codewars": "string",
+  "greeting": { "en": "string", "es": "string" },
+  "role": { "en": "string", "es": "string" },
+  "tagline": { "en": "string", "es": "string" },
+  "bio": { "en": "string", "es": "string" },
+  "location": { "en": "string", "es": "string" }
 }
 ```
 
@@ -168,14 +194,16 @@ curl -X DELETE https://career-api.sebas1705.workers.dev/projects/old-project \
 ```json
 {
   "id": "string (unique, kebab-case)",
-  "role": { "en": "string", "es": "string" },
   "company": "string",
   "companyUrl": "string",
-  "period": { "en": "string", "es": "string" },
+  "startDate": "string (YYYY-MM)",
+  "endDate": "string (YYYY-MM) | null",
+  "role": { "en": "string", "es": "string" },
   "type": { "en": "Hybrid | Remote | On-site", "es": "string" },
+  "period": { "en": "string", "es": "string" },
   "desc": { "en": "string", "es": "string" },
   "projects": ["string"],
-  "achievements": ["string"]
+  "achievements": { "en": ["string"], "es": ["string"] }
 }
 ```
 
@@ -225,7 +253,8 @@ curl -X DELETE https://career-api.sebas1705.workers.dev/projects/old-project \
   "id": "string (unique, kebab-case)",
   "name": "string",
   "category": "string",
-  "level": "number (1-4)"
+  "level": "number (1-4)",
+  "icon_url": "string | null"
 }
 ```
 
@@ -234,8 +263,7 @@ curl -X DELETE https://career-api.sebas1705.workers.dev/projects/old-project \
 ```json
 {
   "id": "string (unique, kebab-case)",
-  "name_en": "string",
-  "name_es": "string"
+  "name": { "en": "string", "es": "string" }
 }
 ```
 
@@ -270,7 +298,7 @@ wrangler.toml       # Cloudflare Worker configuration
 ### Setup
 
 ```bash
-git clone https://github.com/Sebas1705/career-api-worker.git
+git clone https://github.com/Sebas1705Carreer/career-api-worker.git
 cd career-api-worker
 npm install --ignore-scripts
 ```
@@ -293,7 +321,7 @@ After creating the KV namespace, populate it with initial data:
 node seed-kv.mjs
 ```
 
-This writes all entities (personal, jobs, projects, education, certifications, soft-skills) to the remote KV namespace.
+This writes all entities (languages, personal, jobs, projects, education, certifications, skills, soft-skills) to the remote KV namespace.
 
 ### Deploy
 

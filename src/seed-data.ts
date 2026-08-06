@@ -127,7 +127,7 @@ export const SEED = {
       tags: ['Node.js', 'Express', 'TypeScript', 'Docker', 'MongoDB', 'RBAC'],                   github: 'https://github.com/Sebas1705/VPSLocalOrchestrator', demo: null },
     { id: 'portfolio',      name: 'Personal Portfolio v1',   context: 'personal',
       desc: { en: 'Previous portfolio: Astro + Clean Architecture, 14 locales.',                 es: 'Portafolio anterior: Astro + Arquitectura Limpia, 14 idiomas.'} as LocalizedString,
-      tags: ['Astro', 'TypeScript', 'Clean Architecture', 'Docker', 'Vitest', 'Playwright'],     github: 'https://github.com/Sebas1705/my-portfolio', demo: null },
+      tags: ['Astro', 'TypeScript', 'Clean Architecture', 'Docker', 'Vitest', 'Playwright'],     github: 'https://github.com/Sebas1705Carreer/carreerV1', demo: null },
     { id: 'codewars',       name: 'Codewars Katas',          context: 'personal',
       desc: { en: 'Codewars katas in multiple languages.',                                        es: 'Katas de Codewars en multiples lenguajes.'               } as LocalizedString,
       tags: ['Kotlin', 'C#', 'Java', 'JavaScript', 'Python', 'Bash', 'TypeScript'],              github: 'https://github.com/Sebas1705/Codewars', demo: null },

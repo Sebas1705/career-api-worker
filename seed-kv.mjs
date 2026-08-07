@@ -154,7 +154,7 @@ const SEED = {
       desc: { en: 'Codewars katas in multiple languages.',                                es: 'Katas de Codewars en multiples lenguajes.'                       },
       tags: ['Kotlin', 'C#', 'Java', 'JavaScript', 'Python', 'Bash', 'TypeScript'],      github: 'https://github.com/Sebas1705/Codewars',                       demo: null },
     { id: 'apimovil',       name: 'ApiMovil',               context: 'work',
-      desc: { en: 'Internal .NET API powering Solusoft mobile applications.',             es: 'API .NET interna que da servicio a las aplicaciones móviles de Solusoft.' },
+      desc: { en: 'Internal .NET API powering the Transportes Chinchón mobile applications.', es: 'API .NET interna que da servicio a las aplicaciones móviles de Transportes Chinchón.' },
       tags: ['C#', '.NET', 'REST', 'SQL Server'],                                        github: null,                                                           demo: null },
     { id: 'wemob',          name: 'Wemob API',              context: 'work',
       desc: { en: '.NET backend API for the Wemob platform.',                             es: 'API backend .NET para la plataforma Wemob.'                      },

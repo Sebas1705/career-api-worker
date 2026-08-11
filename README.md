@@ -315,12 +315,11 @@ For local development with a local KV namespace, add `[env.development.kv_namesp
 
 ### Seed the KV namespace
 
-> ⚠️ **Re-seeding overwrites live data.** The seed files are only kept in
-> sync for `projects` and `jobs`; **skills** (live has 120 with the
-> `languages`/`frameworks`/... taxonomy, seeds still carry the old ~30-skill
-> set), education and certifications have evolved through the API/editor.
-> Before re-seeding, export the live data (`GET` each entity) or update the
-> seeds from production first.
+> ⚠️ **Re-seeding overwrites live data — the seeds lag production across
+> the board.** Live has 137 skills (vs ~30 in the seeds, old taxonomy),
+> and projects/jobs/education carry `long_desc` fields the seeds never
+> had. Before re-seeding, export the live data (`GET` each entity) and
+> regenerate the seeds from production first.
 
 After creating the KV namespace, populate it with initial data:
 

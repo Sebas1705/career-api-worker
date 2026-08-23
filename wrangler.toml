@@ -3,9 +3,21 @@ main = "src/index.ts"
 compatibility_date = "2024-11-01"
 compatibility_flags = ["nodejs_compat"]
 
+# Kept alive on purpose. It is unreachable from Spanish ISPs that block Cloudflare's
+# shared range, but it costs nothing and remains a working fallback everywhere else.
+workers_dev = true
+
 [[kv_namespaces]]
 binding = "CAREER_KV"
 id = "729e49d91e014213abeab4004c75c40e"
 
 [vars]
 ALLOWED_ORIGIN = "*"
+
+# Custom domain. `*.workers.dev` resolves to a fixed pair of Cloudflare IPs
+# (188.114.96.5 / 188.114.97.5) that Spanish ISPs block under anti-piracy court
+# orders, which made this API unreachable from Vodafone. A custom domain lands on
+# a different, far higher-collateral range instead.
+[[routes]]
+pattern = "api.sebas1705.dev"
+custom_domain = true

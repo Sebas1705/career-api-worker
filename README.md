@@ -2,7 +2,7 @@
 
 REST API for managing personal career portfolio data. Built with **Cloudflare Workers** + **Cloudflare KV**, written in TypeScript.
 
-**Live URL:** `https://career-api.sebas1705.workers.dev` · **Interactive docs:** [`/docs`](https://career-api.sebas1705.workers.dev/docs) (Swagger UI, spec at [`/openapi.json`](https://career-api.sebas1705.workers.dev/openapi.json))
+**Live URL:** `https://api.sebas1705.dev` · **Interactive docs:** [`/docs`](https://api.sebas1705.dev/docs) (Swagger UI, spec at [`/openapi.json`](https://api.sebas1705.dev/openapi.json))
 
 ---
 
@@ -84,7 +84,7 @@ PATCH  /personal          → merges fields into the personal object  [auth]
 
 **Example PATCH:**
 ```bash
-curl -X PATCH https://career-api.sebas1705.workers.dev/personal \
+curl -X PATCH https://api.sebas1705.dev/personal \
   -H "Authorization: Bearer <token>" \
   -H "Content-Type: application/json" \
   -d '{"location": {"en": "Barcelona, Spain", "es": "Barcelona, España"}}'
@@ -111,13 +111,13 @@ DELETE /{entity}/:id      → deletes an item by id  [auth]
 
 ```bash
 # List all projects
-curl https://career-api.sebas1705.workers.dev/projects
+curl https://api.sebas1705.dev/projects
 
 # Get a single project
-curl https://career-api.sebas1705.workers.dev/projects/youknow
+curl https://api.sebas1705.dev/projects/youknow
 
 # Create a new certification
-curl -X POST https://career-api.sebas1705.workers.dev/certifications \
+curl -X POST https://api.sebas1705.dev/certifications \
   -H "Authorization: Bearer <token>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -129,13 +129,13 @@ curl -X POST https://career-api.sebas1705.workers.dev/certifications \
   }'
 
 # Update a job's description
-curl -X PATCH https://career-api.sebas1705.workers.dev/jobs/senior-solusoft \
+curl -X PATCH https://api.sebas1705.dev/jobs/senior-solusoft \
   -H "Authorization: Bearer <token>" \
   -H "Content-Type: application/json" \
   -d '{"desc": {"en": "Updated description", "es": "Descripción actualizada"}}'
 
 # Delete a project
-curl -X DELETE https://career-api.sebas1705.workers.dev/projects/old-project \
+curl -X DELETE https://api.sebas1705.dev/projects/old-project \
   -H "Authorization: Bearer <token>"
 ```
 
@@ -157,7 +157,7 @@ curl -X DELETE https://career-api.sebas1705.workers.dev/projects/old-project \
 
 ## Data Schemas
 
-All localizable fields are `LocalizedString` maps: `{ "en": "string", "es": "string", ... }` with one key per supported language code (see `GET /languages`). The exact schemas are also published in [`/openapi.json`](https://career-api.sebas1705.workers.dev/openapi.json) and browsable at [`/docs`](https://career-api.sebas1705.workers.dev/docs).
+All localizable fields are `LocalizedString` maps: `{ "en": "string", "es": "string", ... }` with one key per supported language code (see `GET /languages`). The exact schemas are also published in [`/openapi.json`](https://api.sebas1705.dev/openapi.json) and browsable at [`/docs`](https://api.sebas1705.dev/docs).
 
 ### Languages
 

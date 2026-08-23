@@ -21,13 +21,13 @@ export const OPENAPI_SPEC = {
     contact: {
       name: 'Sebastián Entrerrios García',
       email: 'sebssgarcia502580@gmail.com',
-      url: 'https://career-api.sebas1705.workers.dev',
+      url: 'https://api.sebas1705.dev',
     },
     license: { name: 'MIT' },
   },
   servers: [
     {
-      url: 'https://career-api.sebas1705.workers.dev',
+      url: 'https://api.sebas1705.dev',
       description: 'Production (Cloudflare Workers)',
     },
     {
